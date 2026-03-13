@@ -195,11 +195,6 @@ int main()
         drukuj(correct);
 
         cout << "(pop: {admin123 john_99 test_user_123})\n";
-
-
-        cout << "\n================\n";
-        cout << "Koniec programu\n";
-
     }
 
     if (Uruchomzad == 4) {
@@ -281,8 +276,11 @@ int main()
             // TODO
             // jeśli regex złapie, wypisz FULL, LEVEL, DATE i MESSAGE
         }
-
     }
+    
+        cout << "\n================\n";
+        cout << "Koniec programu\n";
+
 }
 
 // Uruchomienie programu: Ctrl + F5 lub menu Debugowanie > Uruchom bez debugowania
