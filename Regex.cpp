@@ -1,4 +1,4 @@
-﻿// Regex.cpp : Ten plik zawiera funkcję „main”. W nim rozpoczyna się i kończy wykonywanie programu.
+// Regex.cpp : Ten plik zawiera funkcję „main”. W nim rozpoczyna się i kończy wykonywanie programu.
 //
 
 // Laboratorium – Wyrażenia regularne (regex)
@@ -89,11 +89,14 @@ int main()
         cout << "\n\nZAD 1: WYCIAGANIE LICZB Z TEKSTU\n";
 
         /* Zadanie:
-           W podanym tekście znajdź wszystkie liczby (nie te w nazwach graczy)
-           i zapisz je do wektora numbers.
+            W podanym tekście znajdź wszystkie liczby
+            i zapisz je do wektora numbers.
 
-           Podpowiedź:
-           użyj sregex_iterator
+            Wykorzystaj jedną z funkcji biblioteki <regex>:
+            - regex_match()
+            - regex_search()
+            - regex_replace()
+            - sregex_iterator
         */
 
         string text = "User1 scored 120 points, User2 scored 95 points, User3 scored 100.";
@@ -102,15 +105,11 @@ int main()
 
         regex number_pattern; // TODO
 
-        std::sregex_iterator begin(text.begin(), text.end(), number_pattern);
-        std::sregex_iterator end;
-
-        for (auto it = begin; it != end; ++it)
-        {
-            numbers.push_back(stoi(it->str()));
-        }
+        // TODO:
+        // użyj jednej z funkcji biblioteki <regex> aby znaleźć liczby w tekście i zapisać je do wektora numbers
 
         drukuj(numbers);
+        
         cout << "(pop: {120 95 100})\n";
 
     }
@@ -126,8 +125,10 @@ int main()
         cout << "\n\nZAD 2: CENZURA TEKSTU\n";
 
         /* Zadanie:
-           Zamień wszystkie wystąpienia słowa "stupid"
-           na "***".
+            Zamień wszystkie wystąpienia słowa "stupid"
+            na "***".
+
+            Wybierz odpowiednią funkcję z biblioteki <regex>.
         */
 
         string text2 =
@@ -135,8 +136,10 @@ int main()
 
         regex bad_word; // TODO
 
-        string result =
-            regex_replace(text2, bad_word, "***");
+        // TODO:
+        // użyj jednej z funkcji biblioteki <regex> aby znaleźć wszystkie wystąpienia stupid i zastąpić je ***
+
+        string result; // TODO
 
         cout << result << endl;
 
@@ -151,18 +154,21 @@ int main()
         // ----------------------------------------------------
         cout << "\n\nZAD 3: FILTROWANIE LOGINOW\n";
 
-        /* Zadanie:
+        /* Zadanie:          
 
-           Login musi:
-           - mieć minimum 5 znaków
-           - zawierać tylko:
-             litery
-             cyfry
-             znak _
+            Login musi:
+            - mieć minimum 5 znaków
+            - zawierać tylko:
+                litery
+                cyfry
+                znak _
 
-           Wykorzystaj regex_match.
+            Sprawdź które loginy są poprawne
+            używając biblioteki <regex>.
 
-           czy wiesz jak uniemożliwić _ na początku?
+
+            Dodatkowe pytanie:
+                Jak zmodyfikować regex, aby znak '_' nie mógł wystąpić na początku loginu?
         */
 
         vector<string> logins =
@@ -178,14 +184,13 @@ int main()
 
         regex login_pattern; // TODO
 
-        copy_if(
-            logins.begin(),
-            logins.end(),
-            back_inserter(correct),
-            [&](const string& s)
+        // TODO:
+        // sprawdź które loginy są poprawne i zapisz je do wektora correct
+
+        for (const auto& login : logins)
             {
-                return regex_match(s, login_pattern);
-            });
+                // TODO
+            }
 
         drukuj(correct);
 
@@ -231,8 +236,7 @@ int main()
 
         for (const auto& e : emails)
         {
-            bool valid = regex_match(e, email_pattern);
-            cout << e << " -> " << valid << endl;
+            //TODO
         }
 
         cout << "(poprawne: student@agh.edu.pl, test@test.com, john.doe@company.org)\n";
@@ -247,16 +251,16 @@ int main()
         cout << "\n\nZAD 5: PARSER LOGOW\n";
 
         /* Zadanie:
-           Z loga wyciągnij:
+            Z loga wyciągnij:
 
-           LEVEL
-           DATE
-           MESSAGE
+            LEVEL
+            DATE
+            MESSAGE
 
-           używając grup w regexie ().
+            używając grup w regexie ().
 
-           przykład:
-           [INFO] 2024-03-01 User logged in
+            przykład:
+            [INFO] 2024-03-01 User logged in
         */
 
         vector<string> logs =
@@ -268,18 +272,14 @@ int main()
 
         regex log_pattern; // TODO
 
-        smatch match;
+        // TODO:
+        // użyj jednej z funkcji biblioteki <regex> (regex_match, regex_search)
+        // aby wyciągnąć LEVEL, DATE i MESSAGE z loga
 
         for (auto& log : logs)
         {
-            if (regex_search(log, match, log_pattern))
-            {
-                cout << "FULL: " << match[0] << endl;
-                cout << "LEVEL: " << match[1] << endl;
-                cout << "DATE: " << match[2] << endl;
-                cout << "MESSAGE: " << match[3] << endl;
-                cout << endl;
-            }
+            // TODO
+            // jeśli regex złapie, wypisz FULL, LEVEL, DATE i MESSAGE
         }
 
     }
